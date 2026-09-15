@@ -1,0 +1,114 @@
+:root {
+  --bg: #100f0e;
+  --screen-bg: #171615;
+  --card-bg: #1c1a19;
+  --stripe-a: #2b2927;
+  --stripe-b: #232120;
+  --stripe-a2: #2f2c29;
+  --stripe-b2: #262321;
+
+  --text: #f3f2f2;
+  --text-dim-1: rgba(243, 242, 242, 0.45);
+  --text-dim-2: rgba(243, 242, 242, 0.24);
+
+  --neutral-500: #9b9797;
+  --neutral-600: #7d7979;
+  --neutral-700: #605d5d;
+  --neutral-800: #4c4948;
+
+  --accent: #b68235;
+  --accent-lit: #c9954a;
+  --accent-hover: rgba(182, 130, 53, 0.14);
+  --accent-active: rgba(182, 130, 53, 0.24);
+
+  --divider-1: rgba(243, 242, 242, 0.14);
+  --divider-2: rgba(243, 242, 242, 0.12);
+  --divider-3: rgba(243, 242, 242, 0.1);
+  --divider-4: rgba(243, 242, 242, 0.08);
+
+  --font-heading: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Lora", Georgia, serif;
+  --font-mono: ui-monospace, Menlo, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  color: var(--text);
+}
+
+a {
+  color: var(--accent-lit);
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--accent-lit);
+}
+
+button {
+  font: inherit;
+}
+
+.grain-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.016) 0 1px, transparent 1px 3px);
+  z-index: 5;
+}
+
+.stripe-thumb {
+  background: repeating-linear-gradient(135deg, var(--stripe-a) 0 5px, var(--stripe-b) 5px 10px);
+}
+
+.stripe-thumb-2 {
+  background: repeating-linear-gradient(135deg, var(--stripe-a2) 0 5px, var(--stripe-b2) 5px 10px);
+}
+
+.scrollarea {
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(243, 242, 242, 0.2) transparent;
+}
+
+.btn-outline-accent {
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent-lit);
+}
+.btn-outline-accent:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+.btn-outline-accent:active:not(:disabled) {
+  background: var(--accent-active);
+}
+.btn-outline-accent:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-outline-neutral {
+  background: transparent;
+  border: 1px solid rgba(243, 242, 242, 0.24);
+  color: var(--text);
+}
+.btn-outline-neutral:hover:not(:disabled) {
+  background: rgba(243, 242, 242, 0.07);
+}
+.btn-outline-neutral:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
