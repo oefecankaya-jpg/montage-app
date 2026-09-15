@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="stylesheet" href="_ds/classical-4fd8c83b-dd16-4162-b27d-5df6125860f9/styles.css">
+<script src="_ds/classical-4fd8c83b-dd16-4162-b27d-5df6125860f9/_ds_bundle.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap">
+<template id="__bundler_thumbnail" data-bg-color="#100f0e">
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="400" fill="#100f0e"/><rect x="120" y="120" width="160" height="160" fill="none" stroke="#b68235" stroke-width="2"/><circle cx="200" cy="200" r="46" fill="none" stroke="#b68235" stroke-width="2"/><rect x="199" y="120" width="2" height="160" fill="#b68235" opacity="0.5"/><rect x="120" y="199" width="160" height="2" fill="#b68235" opacity="0.5"/></svg>
+</template>
+<style>
+body{margin:0;background:#100f0e;font-family:"Lora",Georgia,serif;-webkit-font-smoothing:antialiased}
+a{color:#c9954a;text-underline-offset:3px}
+a:hover{color:#e1ad66}
+</style>
+</helmet>
+
+<div style="min-height:100vh;box-sizing:border-box;padding:40px 24px 56px;display:flex;flex-direction:column;align-items:center;gap:22px;background:#100f0e">
+  <div style="text-align:center;max-width:52ch">
+    <span style="font:400 9.5px/1 ui-monospace,Menlo,monospace;letter-spacing:.2em;color:#b68235">MONTAGE · v1 · {{ platformLabel }}</span>
+    <p style="margin:12px 0 0;font-size:13px;line-height:1.7;color:#7d7979;text-wrap:pretty">Many clips in, one cinematic cut out. Every screen below is live — pick footage, set the terms, watch it assemble, then override any shot the AI chose.</p>
+  </div>
+
+  <div style="flex:none;width:412px;height:892px;box-sizing:border-box;padding:10px;border-radius:56px;background:#050505;box-shadow:0 18px 44px rgba(0,0,0,0.55),inset 0 0 0 1px rgba(243,242,242,0.08)">
+   <div style="position:relative;width:100%;height:100%;border-radius:47px;overflow:hidden;background:#171615">
+    <div style="position:absolute;top:0;left:0;right:0;height:54px;z-index:60;display:flex;align-items:center;justify-content:space-between;padding:16px 30px 0;box-sizing:border-box;pointer-events:none">
+      <span style="font:500 14px/1 'Lora',Georgia,serif;color:#f3f2f2;font-variant-numeric:tabular-nums">9:41</span>
+      <span style="display:flex;align-items:center;gap:6px">
+        <span style="display:flex;align-items:flex-end;gap:1.5px;height:9px">
+          <span style="width:2.5px;height:4px;background:#f3f2f2;border-radius:1px"></span>
+          <span style="width:2.5px;height:6px;background:#f3f2f2;border-radius:1px"></span>
+          <span style="width:2.5px;height:8px;background:#f3f2f2;border-radius:1px"></span>
+          <span style="width:2.5px;height:9px;background:rgba(243,242,242,0.4);border-radius:1px"></span>
+        </span>
+        <span style="width:20px;height:9.5px;border:1px solid rgba(243,242,242,0.55);border-radius:2.5px;padding:1.5px;box-sizing:border-box;display:flex">
+          <span style="width:70%;height:100%;background:#f3f2f2;border-radius:1px"></span>
+        </span>
+      </span>
+    </div>
+    <sc-if value="{{ isIOS }}" hint-placeholder-val="{{ true }}">
+      <span style="position:absolute;top:11px;left:50%;transform:translateX(-50%);width:120px;height:34px;border-radius:20px;background:#050505;z-index:70"></span>
+    </sc-if>
+    <sc-if value="{{ isAndroid }}" hint-placeholder-val="{{ false }}">
+      <span style="position:absolute;top:15px;left:50%;transform:translateX(-50%);width:13px;height:13px;border-radius:50%;background:#050505;z-index:70"></span>
+    </sc-if>
+    <span style="position:absolute;bottom:9px;left:50%;transform:translateX(-50%);width:{{ indicatorWidth }};height:5px;border-radius:3px;background:rgba(243,242,242,0.6);z-index:70;pointer-events:none"></span>
+    <div style="height:100%;box-sizing:border-box;padding:54px 0 28px;background:#171615;color:#f3f2f2;display:flex;flex-direction:column;position:relative;overflow:hidden">
+
+      <div style="flex:none;display:flex;align-items:center;gap:12px;padding:8px 22px 11px">
+        <span onClick="{{ back }}" style="flex:none;width:26px;font-family:'Cormorant Garamond',serif;font-size:18px;color:{{ backCol }};cursor:pointer">←</span>
+        <span style="flex:1;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:16px;letter-spacing:.18em;text-align:center;color:#f3f2f2">MONTAGE</span>
+        <span style="flex:none;width:26px;text-align:right;font:400 9px/1.4 ui-monospace,Menlo,monospace;letter-spacing:.06em;color:#b68235;font-variant-numeric:tabular-nums">{{ tag }}</span>
+      </div>
+      <div style="flex:none;height:1px;background:rgba(243,242,242,0.14);margin:0 22px"></div>
+
+      <sc-if value="{{ isShelf }}" hint-placeholder-val="{{ true }}">
+        <div style="flex:1;display:flex;flex-direction:column;overflow:hidden">
+          <div style="padding:22px 22px 16px">
+            <span style="font:400 9.5px/1 ui-monospace,Menlo,monospace;letter-spacing:.18em;color:#b68235">THE SHELF</span>
+            <h2 style="margin:9px 0 7px;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:33px;line-height:1.04">Three reels,<br>one still cutting</h2>
+            <p style="margin:0;font-size:12.5px;line-height:1.65;color:#9b9797;text-wrap:pretty">1,284 clips on this phone — 17 of them shot this week and never looked at again.</p>
+          </div>
+          <div style="flex:1;overflow:auto;padding:0 22px 12px">
+            <sc-for list="{{ reels }}" as="r" hint-placeholder-count="3">
+              <div onClick="{{ r.open }}" style="display:flex;gap:14px;align-items:center;padding:15px 0;border-top:1px solid rgba(243,242,242,0.12);cursor:pointer">
+                <span style="flex:none;width:52px;aspect-ratio:9/16;border:4px solid #242220;outline:1px solid rgba(243,242,242,0.12);background:repeating-linear-gradient(135deg,#2b2927 0 5px,#232120 5px 10px)"></span>
+                <div style="flex:1;min-width:0">
+                  <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:16.5px;line-height:1.2;color:#f3f2f2">{{ r.title }}</div>
+                  <div style="margin-top:5px;font:400 9.5px/1.5 ui-monospace,Menlo,monospace;letter-spacing:.06em;color:#7d7979;font-variant-numeric:tabular-nums">{{ r.meta }}</div>
+                  <div style="margin-top:4px;font-size:11.5px;line-height:1.5;color:{{ r.stateCol }}">{{ r.state }}</div>
+                </div>
+                <span style="flex:none;font-family:'Cormorant Garamond',serif;font-size:16px;color:#b68235">→</span>
+              </div>
+            </sc-for>
+            <div style="border-top:1px solid rgba(243,242,242,0.12);padding-top:15px">
+              <p style="margin:0;font-size:11.5px;line-height:1.7;color:#605d5d;text-align:justify;text-wrap:pretty">Nothing is uploaded. Footage is read on the phone; only the edit decisions travel.</p>
+            </div>
+          </div>
+          <div style="flex:none;padding:12px 22px 0;border-top:1px solid rgba(243,242,242,0.14)">
+            <button onClick="{{ newReel }}" style="width:100%;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:15px;color:#c9954a;background:transparent;border:1px solid #b68235;border-radius:4px;padding:14px;cursor:pointer;letter-spacing:.02em" style-hover="background:rgba(182,130,53,0.14)" style-active="background:rgba(182,130,53,0.24)">Start a new reel</button>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isFootage }}" hint-placeholder-val="{{ false }}">
+        <div style="flex:1;display:flex;flex-direction:column;overflow:hidden">
+          <div style="padding:18px 22px 12px">
+            <span style="font:400 9.5px/1 ui-monospace,Menlo,monospace;letter-spacing:.18em;color:#b68235">STEP ONE</span>
+            <h2 style="margin:8px 0 6px;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:30px;line-height:1.05">The footage</h2>
+            <p style="margin:0;font-size:12.5px;line-height:1.6;color:#9b9797;text-wrap:pretty">Everything from this week is in. Tap to drop what you don't want read.</p>
+          </div>
+          <div style="display:flex;align-items:baseline;gap:12px;padding:0 22px 11px;font:400 10px/1 ui-monospace,Menlo,monospace;letter-spacing:.1em;color:#b68235;font-variant-numeric:tabular-nums">
+            <span>{{ selCount }} KEPT</span><span style="color:rgba(243,242,242,0.3)">/</span><span>{{ selDur }} READ</span><span style="color:rgba(243,242,242,0.3)">/</span><span>{{ dropCount }} DROPPED</span>
+          </div>
+          <div style="flex:1;overflow:auto;padding:0 22px 14px">
+            <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px">
+              <sc-for list="{{ clips }}" as="clip" hint-placeholder-count="12">
+                <div onClick="{{ clip.toggle }}" style="position:relative;aspect-ratio:9/13;cursor:pointer;background:repeating-linear-gradient(135deg,#2b2927 0 5px,#232120 5px 10px);border:1px solid rgba(243,242,242,0.12);border-radius:2px;overflow:hidden">
+                  <span style="position:absolute;left:5px;bottom:4px;font:400 8px/1 ui-monospace,Menlo,monospace;color:rgba(243,242,242,0.5);font-variant-numeric:tabular-nums">{{ clip.dur }}</span>
+                  <span style="position:absolute;left:5px;top:5px;font:400 7.5px/1.3 ui-monospace,Menlo,monospace;color:rgba(243,242,242,0.34);max-width:72%">{{ clip.label }}</span>
+                  <sc-if value="{{ clip.on }}" hint-placeholder-val="{{ true }}">
+                    <span style="position:absolute;inset:0;border:1px solid #b68235;border-radius:2px;box-shadow:inset 0 0 0 3px rgba(23,22,21,0.6)"></span>
+                  </sc-if>
+                  <sc-if value="{{ clip.on }}" hint-placeholder-val="{{ true }}">
+                    <span style="position:absolute;right:5px;top:5px;width:14px;height:14px;border:1px solid #b68235;border-radius:50%;display:flex;align-items:center;justify-content:center;font:400 8px/1 ui-monospace,Menlo,monospace;color:#c9954a;background:rgba(23,22,21,0.7);font-variant-numeric:tabular-nums">{{ clip.n }}</span>
+                  </sc-if>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          <div style="flex:none;padding:12px 22px 0;border-top:1px solid rgba(243,242,242,0.14);display:flex;gap:10px;align-items:center">
+            <button onClick="{{ selectAll }}" style="flex:none;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:13px;color:#f3f2f2;background:transparent;border:1px solid rgba(243,242,242,0.24);border-radius:4px;padding:12px 14px;cursor:pointer" style-hover="background:rgba(243,242,242,0.07)">Keep all</button>
+            <button onClick="{{ goTerms }}" style="flex:1;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:14.5px;color:#c9954a;background:transparent;border:1px solid #b68235;border-radius:4px;padding:13px 14px;cursor:pointer" style-hover="background:rgba(182,130,53,0.14)" style-active="background:rgba(182,130,53,0.24)">Direct the cut →</button>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isTerms }}" hint-placeholder-val="{{ false }}">
+        <div style="flex:1;display:flex;flex-direction:column;overflow:hidden">
+          <div style="padding:18px 22px 10px">
+            <span style="font:400 9.5px/1 ui-monospace,Menlo,monospace;letter-spacing:.18em;color:#b68235">STEP TWO · CALL SHEET</span>
+            <h2 style="margin:8px 0 0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:30px;line-height:1.05">Terms of the cut</h2>
+          </div>
+          <div style="flex:1;overflow:auto;padding:0 22px 14px">
+            <sc-for list="{{ sliders }}" as="s" hint-placeholder-count="3">
+              <div style="padding:13px 0;border-top:1px solid rgba(243,242,242,0.12)">
+                <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:9px">
+                  <span style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:14.5px;color:#f3f2f2">{{ s.label }}</span>
+                  <span style="font:400 10.5px/1 ui-monospace,Menlo,monospace;color:#c9954a;font-variant-numeric:tabular-nums">{{ s.val }}</span>
+                </div>
+                <div onClick="{{ s.set }}" style="position:relative;height:24px;display:flex;align-items:center;cursor:pointer">
+                  <span style="position:absolute;left:0;right:0;height:1px;background:rgba(243,242,242,0.22)"></span>
+                  <span style="position:absolute;left:0;top:11px;height:1px;background:#b68235;width:{{ s.pct }}"></span>
+                  <span style="position:absolute;top:5px;width:1px;height:14px;background:#c9954a;left:{{ s.pct }}"></span>
+                </div>
+                <p style="margin:6px 0 0;font-size:11px;line-height:1.55;color:#7d7979;text-wrap:pretty">{{ s.note }}</p>
+              </div>
+            </sc-for>
+            <div style="padding:13px 0;border-top:1px solid rgba(243,242,242,0.12)">
+              <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:9px">
+                <span style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:14.5px;color:#f3f2f2">Colour grade</span>
+                <span onClick="{{ goLooks }}" style="font:400 9.5px/1 ui-monospace,Menlo,monospace;letter-spacing:.08em;color:#c9954a;cursor:pointer;border-bottom:1px solid rgba(182,130,53,0.5);padding-bottom:2px">ALL {{ lookCount }} LOOKS</span>
+              </div>
+              <div style="display:flex;gap:8px">
+                <sc-for list="{{ gradePreviews }}" as="g" hint-placeholder-count="3">
+                  <span onClick="{{ g.pick }}" style="flex:1;cursor:pointer;display:flex;flex-direction:column;gap:6px">
+                    <span style="aspect-ratio:3/2;border:1px solid {{ g.bd }};background:repeating-linear-gradient(135deg,#2b2927 0 5px,#232120 5px 10px);filter:{{ g.filter }}"></span>
+                    <span style="font-size:10.5px;line-height:1.3;color:{{ g.col }}">{{ g.name }}</span>
+                  </span>
+                </sc-for>
+              </div>
+            </div>
+            <sc-for list="{{ knobRows }}" as="k" hint-placeholder-count="4">
+              <div style="padding:13px 0;border-top:1px solid rgba(243,242,242,0.12)">
+                <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:9px">
+                  <span style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:14.5px;color:#f3f2f2">{{ k.label }}</span>
+                  <span style="font:400 9.5px/1 ui-monospace,Menlo,monospace;letter-spacing:.1em;color:#7d7979">{{ k.hint }}</span>
+                </div>
+                <div style="display:flex;flex-wrap:wrap;gap:6px">
+                  <sc-for list="{{ k.opts }}" as="o" hint-placeholder-count="4">
+                    <button onClick="{{ o.pick }}" style="font-family:'Lora',Georgia,serif;font-size:11.5px;padding:8px 11px;border-radius:2px;background:transparent;cursor:pointer;border:1px solid {{ o.bd }};color:{{ o.col }}">{{ o.t }}</button>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-for>
+            <div style="padding:13px 0 0;border-top:1px solid rgba(243,242,242,0.12);display:flex;flex-direction:column;gap:12px">
+              <sc-for list="{{ toggles }}" as="g" hint-placeholder-count="2">
+                <div onClick="{{ g.flip }}" style="display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer">
+                  <div>
+                    <div style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:14px;color:#f3f2f2">{{ g.label }}</div>
+                    <div style="font-size:10.5px;line-height:1.5;color:#7d7979">{{ g.note }}</div>
+                  </div>
+                  <span style="flex:none;width:34px;height:18px;border-radius:9px;position:relative;border:1px solid {{ g.bd }}">
+                    <span style="position:absolute;top:2px;width:12px;height:12px;border-radius:50%;left:{{ g.x }};background:{{ g.dot }}"></span>
+                  </span>
+                </div>
+              </sc-for>
+            </div>
+            <p style="margin:16px 0 0;font:400 10px/1.6 ui-monospace,Menlo,monospace;color:#605d5d">{{ briefLine }}</p>
+          </div>
+          <div style="flex:none;padding:12px 22px 0;border-top:1px solid rgba(243,242,242,0.14);display:flex;gap:10px">
+            <button onClick="{{ goFootage }}" style="flex:none;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:13px;color:#f3f2f2;background:transparent;border:1px solid rgba(243,242,242,0.24);border-radius:4px;padding:12px 14px;cursor:pointer" style-hover="background:rgba(243,242,242,0.07)">Footage</button>
+            <button onClick="{{ startRender }}" style="flex:1;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:14.5px;color:#c9954a;background:transparent;border:1px solid #b68235;border-radius:4px;padding:13px 14px;cursor:pointer" style-hover="background:rgba(182,130,53,0.14)" style-active="background:rgba(182,130,53,0.24)">Assemble</button>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isLooks }}" hint-placeholder-val="{{ false }}">
+        <div style="flex:1;display:flex;flex-direction:column;overflow:hidden">
+          <div style="padding:18px 22px 12px">
+            <span style="font:400 9.5px/1 ui-monospace,Menlo,monospace;letter-spacing:.18em;color:#b68235">THE LOOK BOOK</span>
+            <h2 style="margin:8px 0 6px;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:29px;line-height:1.05">Eight grades</h2>
+            <p style="margin:0;font-size:12.5px;line-height:1.6;color:#9b9797;text-wrap:pretty">Each one is a film stock, not a filter — exposure and contrast are matched per shot before it lands.</p>
+          </div>
+          <div style="flex:1;overflow:auto;padding:0 22px 14px">
+            <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px">
+              <sc-for list="{{ looks }}" as="l" hint-placeholder-count="8">
+                <div onClick="{{ l.pick }}" style="cursor:pointer;display:flex;flex-direction:column;gap:7px">
+                  <span style="aspect-ratio:4/3;border:4px solid #242220;outline:1px solid {{ l.bd }};background:repeating-linear-gradient(135deg,#2f2c29 0 5px,#262321 5px 10px);filter:{{ l.filter }}"></span>
+                  <span style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:14px;color:{{ l.col }}">{{ l.name }}</span>
+                  <span style="font-size:10.5px;line-height:1.5;color:#7d7979;margin-top:-4px">{{ l.note }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          <div style="flex:none;padding:12px 22px 0;border-top:1px solid rgba(243,242,242,0.14)">
+            <button onClick="{{ goTerms }}" style="width:100%;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:14px;color:#c9954a;background:transparent;border:1px solid #b68235;border-radius:4px;padding:13px;cursor:pointer" style-hover="background:rgba(182,130,53,0.14)">Use {{ gradeName }}</button>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isRender }}" hint-placeholder-val="{{ false }}">
+        <div style="flex:1;display:flex;flex-direction:column;padding:0 22px;overflow:hidden">
+          <div style="flex:none;padding:24px 0 16px;position:relative">
+            <span style="position:absolute;right:-4px;top:2px;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:112px;line-height:.8;color:rgba(182,130,53,0.16);font-variant-numeric:tabular-nums">{{ pctNum }}</span>
+            <span style="font:400 9.5px/1 ui-monospace,Menlo,monospace;letter-spacing:.18em;color:#b68235">STEP THREE · ASSEMBLING</span>
+            <h2 style="margin:9px 0 0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:29px;line-height:1.08;max-width:70%">{{ nowLine }}</h2>
+          </div>
+          <div style="flex:none;height:1px;background:rgba(243,242,242,0.14);position:relative">
+            <span style="position:absolute;left:0;top:0;height:1px;background:#b68235;width:{{ pct }}"></span>
+          </div>
+          <div style="flex:1;overflow:auto;padding:4px 0 10px">
+            <sc-for list="{{ steps }}" as="st" hint-placeholder-count="7">
+              <div style="display:flex;gap:12px;align-items:baseline;padding:12px 0;border-bottom:1px solid rgba(243,242,242,0.08)">
+                <span style="flex:none;width:22px;font:400 9.5px/1.6 ui-monospace,Menlo,monospace;color:{{ st.num }};font-variant-numeric:tabular-nums">{{ st.i }}</span>
+                <div style="flex:1">
+                  <div style="font-size:13px;line-height:1.5;color:{{ st.col }}">{{ st.t }}</div>
+                  <div style="font-size:10.5px;line-height:1.5;color:#605d5d">{{ st.sub }}</div>
+                </div>
+                <span style="flex:none;font:400 9px/1 ui-monospace,Menlo,monospace;letter-spacing:.1em;color:{{ st.num }}">{{ st.mark }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <div style="flex:none;padding:10px 0 0;border-top:1px solid rgba(243,242,242,0.14)">
+            <button onClick="{{ goCut }}" style="width:100%;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:14px;color:{{ renderCtaCol }};background:transparent;border:1px solid {{ renderCtaBd }};border-radius:4px;padding:13px;cursor:pointer">{{ renderCta }}</button>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isCut }}" hint-placeholder-val="{{ false }}">
+        <div style="flex:1;display:flex;flex-direction:column;overflow:hidden">
+          <div style="padding:16px 22px 12px;display:flex;align-items:flex-end;justify-content:space-between;gap:12px">
+            <div>
+              <span style="font:400 9.5px/1 ui-monospace,Menlo,monospace;letter-spacing:.18em;color:#b68235">STEP FOUR · {{ shotCount }} SHOTS</span>
+              <h2 style="margin:8px 0 0;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:27px;line-height:1.05">The assembly</h2>
+            </div>
+            <span style="font:400 11px/1 ui-monospace,Menlo,monospace;color:#c9954a;font-variant-numeric:tabular-nums">{{ playTc }}</span>
+          </div>
+
+          <div style="margin:0 22px;border:1px solid rgba(243,242,242,0.14);border-radius:2px;background:repeating-linear-gradient(135deg,#242220 0 5px,#1e1c1b 5px 10px);aspect-ratio:9/6;position:relative;overflow:hidden;filter:{{ curFilter }}">
+            <span style="position:absolute;inset:6px;border:1px solid rgba(243,242,242,0.1)"></span>
+            <span style="position:absolute;left:12px;top:12px;font:400 9px/1.5 ui-monospace,Menlo,monospace;color:rgba(243,242,242,0.45)">SHOT {{ curN }} — {{ curName }}</span>
+            <span style="position:absolute;left:12px;bottom:12px;font:400 9px/1 ui-monospace,Menlo,monospace;color:rgba(243,242,242,0.4);font-variant-numeric:tabular-nums">{{ curSrc }}</span>
+            <span onClick="{{ togglePlay }}" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:46px;height:46px;border:1px solid #b68235;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;background:rgba(23,22,21,0.55)">
+              <span style="font-family:'Cormorant Garamond',serif;font-size:15px;color:#c9954a;letter-spacing:.06em">{{ playGlyph }}</span>
+            </span>
+            <sc-if value="{{ captions }}" hint-placeholder-val="{{ true }}">
+              <span style="position:absolute;left:0;right:0;bottom:30px;text-align:center;font-size:11px;color:#f3f2f2;text-shadow:0 1px 3px rgba(0,0,0,.8)">{{ captionLine }}</span>
+            </sc-if>
+          </div>
+
+          <div style="padding:13px 22px 0">
+            <div style="display:flex;justify-content:space-between;font:400 8.5px/1 ui-monospace,Menlo,monospace;color:#7d7979;margin-bottom:5px;font-variant-numeric:tabular-nums">
+              <sc-for list="{{ ticks }}" as="tk" hint-placeholder-count="5"><span>{{ tk }}</span></sc-for>
+            </div>
+            <div onClick="{{ scrub }}" style="position:relative;display:flex;gap:2px;height:42px;cursor:pointer">
+              <sc-for list="{{ shots }}" as="sh" hint-placeholder-count="9">
+                <span onClick="{{ sh.pick }}" style="position:relative;flex:{{ sh.flex }};min-width:0;border-radius:1px;background:repeating-linear-gradient(90deg,#332f2b 0 3px,#282523 3px 6px);border-top:1px solid {{ sh.bd }};border-bottom:1px solid {{ sh.bd }};overflow:hidden">
+                  <span style="position:absolute;left:2px;top:2px;font:400 7.5px/1 ui-monospace,Menlo,monospace;color:{{ sh.lab }};font-variant-numeric:tabular-nums">{{ sh.n }}</span>
+                </span>
+              </sc-for>
+              <span style="position:absolute;top:-5px;bottom:-5px;width:1px;background:#c9954a;left:{{ playPct }}"></span>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-top:7px;font:400 8.5px/1 ui-monospace,Menlo,monospace;letter-spacing:.1em;color:#7d7979"><span>A1 — {{ trackName }}</span><span>{{ beatLabel }}</span></div>
+            <div style="display:flex;gap:2px;height:11px;margin-top:4px">
+              <sc-for list="{{ beats }}" as="b" hint-placeholder-count="24"><span style="flex:1;border-left:1px solid {{ b.c }}"></span></sc-for>
+            </div>
+          </div>
+
+          <div style="flex:1;overflow:auto;padding:14px 22px 10px">
+            <div style="border-top:1px solid rgba(243,242,242,0.14);padding-top:12px">
+              <div style="display:flex;justify-content:space-between;align-items:baseline">
+                <span style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:16px;color:#f3f2f2">Shot {{ curN }} — {{ curName }}</span>
+                <span style="font:400 10px/1 ui-monospace,Menlo,monospace;color:#c9954a;font-variant-numeric:tabular-nums">{{ curRange }}</span>
+              </div>
+              <p style="margin:8px 0 0;font-size:12.5px;line-height:1.65;color:#9b9797;text-align:justify;text-wrap:pretty"><em style="color:#c9954a;font-style:italic">Why it's here — </em>{{ curReason }}</p>
+              <div style="display:flex;gap:7px;margin-top:12px;flex-wrap:wrap">
+                <button onClick="{{ reroll }}" style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:12.5px;color:#c9954a;background:transparent;border:1px solid #b68235;border-radius:4px;padding:10px 12px;cursor:pointer" style-hover="background:rgba(182,130,53,0.14)">Re-roll</button>
+                <button onClick="{{ trim }}" style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:12.5px;color:#f3f2f2;background:transparent;border:1px solid rgba(243,242,242,0.24);border-radius:4px;padding:10px 12px;cursor:pointer" style-hover="background:rgba(243,242,242,0.07)">Trim 0.4s</button>
+                <button onClick="{{ hold }}" style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:12.5px;color:#f3f2f2;background:transparent;border:1px solid rgba(243,242,242,0.24);border-radius:4px;padding:10px 12px;cursor:pointer" style-hover="background:rgba(243,242,242,0.07)">Hold longer</button>
+                <button onClick="{{ drop }}" style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:12.5px;color:#f3f2f2;background:transparent;border:1px solid rgba(243,242,242,0.24);border-radius:4px;padding:10px 12px;cursor:pointer" style-hover="background:rgba(243,242,242,0.07)">Drop</button>
+              </div>
+              <p style="margin:12px 0 0;font:400 10px/1.6 ui-monospace,Menlo,monospace;color:#605d5d">{{ editLog }}</p>
+            </div>
+          </div>
+
+          <div style="flex:none;padding:12px 22px 0;border-top:1px solid rgba(243,242,242,0.14);display:flex;gap:10px">
+            <button onClick="{{ goTerms }}" style="flex:none;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:13px;color:#f3f2f2;background:transparent;border:1px solid rgba(243,242,242,0.24);border-radius:4px;padding:12px 13px;cursor:pointer" style-hover="background:rgba(243,242,242,0.07)">Terms</button>
+            <button onClick="{{ goPrint }}" style="flex:1;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:14.5px;color:#c9954a;background:transparent;border:1px solid #b68235;border-radius:4px;padding:13px 14px;cursor:pointer" style-hover="background:rgba(182,130,53,0.14)">Print it →</button>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isPrint }}" hint-placeholder-val="{{ false }}">
+        <div style="flex:1;display:flex;flex-direction:column;overflow:hidden">
+          <div style="flex:1;overflow:auto;padding:18px 22px 12px">
+            <div style="border:1px solid rgba(243,242,242,0.16);padding:26px 20px;text-align:center;background:#1c1a19;position:relative;overflow:hidden">
+              <span style="position:absolute;right:-14px;bottom:-40px;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:150px;line-height:.8;color:rgba(182,130,53,0.1);font-variant-numeric:tabular-nums">01</span>
+              <span style="font:400 9px/1 ui-monospace,Menlo,monospace;letter-spacing:.2em;color:#b68235">MONTAGE / CUT 01</span>
+              <h2 style="margin:16px 0 2px;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:36px;line-height:1.02;color:#f3f2f2">Golden Hour,<br>Twice Over</h2>
+              <div style="height:1px;background:rgba(182,130,53,0.5);width:56px;margin:16px auto"></div>
+              <p style="margin:0;font-size:11.5px;line-height:1.8;color:#9b9797;position:relative;font-variant-numeric:tabular-nums">{{ shotCount }} shots from {{ selCount }} clips<br>{{ lenLabel }} · {{ aspect }} · {{ gradeName }}<br>{{ trackName }}</p>
+            </div>
+            <div style="margin-top:18px">
+              <span style="font:400 9.5px/1 ui-monospace,Menlo,monospace;letter-spacing:.18em;color:#b68235">DELIVERABLES</span>
+              <sc-for list="{{ deliverables }}" as="d" hint-placeholder-count="4">
+                <div onClick="{{ d.flip }}" style="display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid rgba(243,242,242,0.1);cursor:pointer">
+                  <span style="flex:none;width:15px;height:15px;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:9px;border:1px solid {{ d.bd }};color:{{ d.tick }}">✓</span>
+                  <span style="flex:1;font-size:12.5px;color:#f3f2f2">{{ d.label }}</span>
+                  <span style="flex:none;font:400 9.5px/1 ui-monospace,Menlo,monospace;color:#7d7979;font-variant-numeric:tabular-nums">{{ d.spec }}</span>
+                </div>
+              </sc-for>
+              <div style="display:flex;justify-content:space-between;padding:13px 0;font:400 10px/1 ui-monospace,Menlo,monospace;letter-spacing:.1em;color:#c9954a;font-variant-numeric:tabular-nums"><span>{{ delivCount }} SELECTED</span><span>{{ delivSize }}</span></div>
+            </div>
+            <sc-if value="{{ exported }}" hint-placeholder-val="{{ false }}">
+              <div style="border-top:1px solid rgba(243,242,242,0.14);padding-top:14px">
+                <span style="font:400 9.5px/1 ui-monospace,Menlo,monospace;letter-spacing:.18em;color:#b68235">SEND IT</span>
+                <div style="display:flex;flex-direction:column;margin-top:4px">
+                  <sc-for list="{{ destinations }}" as="dst" hint-placeholder-count="4">
+                    <div style="display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid rgba(243,242,242,0.1);cursor:pointer">
+                      <span style="flex:none;width:24px;height:24px;border:1px solid rgba(243,242,242,0.24);border-radius:2px"></span>
+                      <span style="flex:1;font-size:12.5px;color:#f3f2f2">{{ dst.t }}</span>
+                      <span style="font-family:'Cormorant Garamond',serif;font-size:15px;color:#c9954a">→</span>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-if>
+            <p style="margin:15px 0 0;font-size:11.5px;line-height:1.7;color:#7d7979;text-align:justify;text-wrap:pretty">{{ exportNote }}</p>
+          </div>
+          <div style="flex:none;padding:12px 22px 0;border-top:1px solid rgba(243,242,242,0.14);display:flex;gap:10px">
+            <button onClick="{{ goCut }}" style="flex:none;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:13px;color:#f3f2f2;background:transparent;border:1px solid rgba(243,242,242,0.24);border-radius:4px;padding:12px 13px;cursor:pointer" style-hover="background:rgba(243,242,242,0.07)">Cut</button>
+            <button onClick="{{ doExport }}" style="flex:1;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:14.5px;color:#c9954a;background:transparent;border:1px solid #b68235;border-radius:4px;padding:13px 14px;cursor:pointer" style-hover="background:rgba(182,130,53,0.14)">{{ exportCta }}</button>
+          </div>
+        </div>
+      </sc-if>
+
+      <div style="flex:none;display:flex;padding:13px 22px 0;border-top:1px solid rgba(243,242,242,0.14)">
+        <sc-for list="{{ stepper }}" as="p" hint-placeholder-count="5">
+          <span onClick="{{ p.go }}" style="flex:1;cursor:pointer;display:flex;flex-direction:column;gap:5px">
+            <span style="height:1px;background:{{ p.rule }}"></span>
+            <span style="font:400 8.5px/1 ui-monospace,Menlo,monospace;letter-spacing:.1em;color:{{ p.col }}">{{ p.t }}</span>
+          </span>
+        </sc-for>
+      </div>
+      <span style="position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(255,255,255,0.016) 0 1px,transparent 1px 3px);display:{{ grainDisplay }}"></span>
+    </div>
+   </div>
+  </div>
+
+  <p style="margin:0;max-width:60ch;text-align:center;font:400 11.5px/1.7 'Lora',Georgia,serif;color:#605d5d;text-wrap:pretty">Footage thumbnails are striped placeholders — drop in real stills and they take the grade automatically.</p>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;platform&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;iPhone&quot;,&quot;Android&quot;],&quot;default&quot;:&quot;iPhone&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Device&quot;},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#b68235&quot;,&quot;options&quot;:[&quot;#b68235&quot;,&quot;#c28d41&quot;,&quot;#9b9797&quot;,&quot;#e1ad66&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Look&quot;},&quot;showGrain&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Look&quot;},&quot;narrationSpeed&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:850,&quot;min&quot;:300,&quot;max&quot;:2000,&quot;step&quot;:50,&quot;unit&quot;:&quot;ms&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Behaviour&quot;}}">
+const CLIPS = [
+  ['IMG_4471','0:12'],['IMG_4472','0:31'],['IMG_4478','0:08'],['IMG_4480','1:04'],
+  ['IMG_4482','0:19'],['IMG_4485','0:26'],['IMG_4491','0:47'],['IMG_4493','0:14'],
+  ['IMG_4495','0:09'],['IMG_4498','0:38'],['IMG_4501','0:22'],['IMG_4503','0:16'],
+  ['IMG_4507','0:55'],['IMG_4509','0:11'],['IMG_4512','0:29'],['IMG_4514','0:07'],
+  ['IMG_4518','0:41'],['IMG_4520','0:18'],['IMG_4522','0:13'],['IMG_4526','0:34'],
+  ['IMG_4529','0:24'],['IMG_4533','0:16'],['IMG_4536','0:21'],['IMG_4540','0:09']
+].map(function (c, i) { return { id: i, label: c[0], dur: c[1], secs: (+c[1].split(':')[0]) * 60 + (+c[1].split(':')[1]) }; });
+
+const STEPS = [
+  ['Reading the footage', 'Twenty clips, frame by frame, on the phone.'],
+  ['Finding the best moments', 'Sharpness, exposure, faces, horizon lines.'],
+  ['Marking beats in the music bed', 'Ninety-two to the minute; every second bar.'],
+  ['Choosing the cold open', 'The strongest frame goes first, not the earliest.'],
+  ['Grading to the look', 'Exposure matched shot to shot before the stock.'],
+  ['Laying the cut', 'Nine shots, motion matched across the joins.'],
+  ['Print ready', 'Project file kept — nothing is baked in.']
+];
+
+const SHOTS = [
+  ['Rooftop, wide', 'IMG_4480', 2.4, 'Strongest first frame in the roll — the horizon lands dead centre and the exposure is already close to the grade.', 'We got up there before anyone else did.'],
+  ['Hands, macro', 'IMG_4495', 1.2, 'Cuts the wide before it settles. Short enough to read as a beat, not a shot.', ''],
+  ['Street, tracking', 'IMG_4491', 3.1, 'Camera moves left, so it carries the eye into the next shot without needing a transition.', 'Six blocks, no plan.'],
+  ['Face, close', 'IMG_4472', 2.0, 'The only frame where you look up into the light. Held two beats longer than the rest.', ''],
+  ['Water, slow', 'IMG_4507', 3.6, 'Breath after the close-up. Ramped to 0.6× so it sits under the chorus.', 'Then the tide came in.'],
+  ['Sign, static', 'IMG_4518', 1.1, 'Reads in under a second and names the place, so nothing has to say it out loud.', ''],
+  ['Crowd, pan', 'IMG_4498', 2.7, 'Motion direction matches the tracking shot three shots earlier — the pair bookends the middle.', ''],
+  ['Window, silhouette', 'IMG_4526', 2.2, 'Darkest frame in the cut; it buys contrast for the last shot.', ''],
+  ['Horizon, last light', 'IMG_4485', 3.4, 'Ends on the warmest frame you shot. Holds twelve frames past the final beat.', 'Same hour, second time lucky.']
+];
+
+const LOOKS = [
+  ['Kodak 2383', 'Print stock warmth, deep blacks.', 'sepia(0.28) saturate(0.9) contrast(1.08)'],
+  ['Bleach bypass', 'Silver retained — harsh and metallic.', 'saturate(0.35) contrast(1.35) brightness(1.05)'],
+  ['Cold night', 'Blue shadows, clean highlights.', 'hue-rotate(-18deg) saturate(1.1) brightness(0.92)'],
+  ['Faded 16mm', 'Lifted blacks, milky grain.', 'sepia(0.18) saturate(0.7) contrast(0.88) brightness(1.08)'],
+  ['Golden hour', 'Everything an hour before dusk.', 'sepia(0.4) saturate(1.15) contrast(1.05)'],
+  ['Portra 400', 'Neutral skin, soft roll-off.', 'sepia(0.12) saturate(0.95) contrast(0.98)'],
+  ['Tungsten', 'Interior amber, held warm.', 'sepia(0.45) saturate(0.8) brightness(0.95)'],
+  ['Monochrome', 'No colour to hide behind.', 'grayscale(1) contrast(1.15)']
+];
+
+const PACING = ['Languid', 'Measured', 'Quick', 'Frenetic'];
+const ASPECTS = ['9:16', '4:5', '1:1', '2.39:1'];
+const TRANS = ['Hard cuts', 'Whip pan', 'Dissolve', 'Match cut'];
+const HOOKS = ['Cold open', 'Best frame first', 'Question', 'Slow build'];
+
+const REELS = [
+  ['Golden Hour, Twice Over', '9 shots · 00:32 · 9:16', 'Printed yesterday', '#7d7979'],
+  ['Six Blocks, No Plan', '14 shots · 00:48 · 4:5', 'Draft — 3 shots overridden', '#c9954a'],
+  ['The Long Way Round', '7 shots · 00:21 · 9:16', 'Printed last week', '#7d7979']
+];
+
+class Component extends DCLogic {
+  state = {
+    screen: 'shelf', prev: 'shelf',
+    dropped: { 3: true, 8: true, 15: true, 19: true, 22: true },
+    len: 32, music: 62, broll: 45,
+    grade: 'Kodak 2383', pacing: 'Measured', aspect: '9:16', trans: 'Hard cuts', hook: 'Cold open',
+    captions: true, camera: true,
+    step: 0, playing: true, playhead: 0, shot: 0,
+    log: '', deliv: { 0: true, 1: true }, exported: false
+  };
+
+  componentWillUnmount() { clearInterval(this._t); }
+
+  go = (s) => { clearInterval(this._t); this.setState((st) => ({ screen: s, prev: st.screen })); };
+
+  startRender = () => {
+    clearInterval(this._t);
+    this.setState((st) => ({ screen: 'render', prev: st.screen, step: 0 }));
+    const speed = this.props.narrationSpeed ?? 850;
+    this._t = setInterval(() => {
+      this.setState((st) => {
+        if (st.step >= STEPS.length - 1) { clearInterval(this._t); return { step: STEPS.length - 1 }; }
+        return { step: st.step + 1 };
+      });
+    }, speed);
+  };
+
+  kept() { return CLIPS.filter((c) => !this.state.dropped[c.id]); }
+  fmt(s) { const m = Math.floor(s / 60); const r = Math.round(s % 60); return m + ':' + (r < 10 ? '0' : '') + r; }
+  tc(s) { const t = Math.round(s); const m = Math.floor(t / 60); const r = t % 60; return (m < 10 ? '0' : '') + m + ':' + (r < 10 ? '0' : '') + r; }
+
+  renderVals() {
+    const st = this.state;
+    const accent = this.props.accent ?? '#b68235';
+    const lit = '#c9954a';
+    const dim = 'rgba(243,242,242,0.2)';
+    const kept = this.kept();
+    const raw = SHOTS.reduce((a, s) => a + s[2], 0);
+    const scale = st.len / raw;
+    const total = st.len;
+    const look = LOOKS.find((l) => l[0] === st.grade) || LOOKS[0];
+    const cur = SHOTS[st.shot];
+    const curLen = cur[2] * scale;
+    let acc = 0; for (let i = 0; i < st.shot; i++) acc += SHOTS[i][2] * scale;
+    const done = st.step === STEPS.length - 1;
+
+    const seg = (label, hint, list, key) => ({
+      label: label, hint: hint,
+      opts: list.map((t) => ({
+        t: t,
+        bd: st[key] === t ? accent : dim,
+        col: st[key] === t ? lit : '#9b9797',
+        pick: () => { const o = {}; o[key] = t; this.setState(o); }
+      }))
+    });
+    const slide = (label, key, val, unit, note, min, max) => ({
+      label: label, val: val + unit, note: note,
+      pct: Math.round(((val - min) / (max - min)) * 100) + '%',
+      set: (e) => {
+        const r = e.currentTarget.getBoundingClientRect();
+        const p = Math.min(1, Math.max(0, (e.clientX - r.left) / r.width));
+        const o = {}; o[key] = Math.round(min + p * (max - min)); this.setState(o);
+      }
+    });
+    const toggle = (label, note, key) => ({
+      label: label, note: note,
+      bd: st[key] ? accent : 'rgba(243,242,242,0.22)',
+      dot: st[key] ? lit : 'rgba(243,242,242,0.35)',
+      x: st[key] ? '18px' : '2px',
+      flip: () => { const o = {}; o[key] = !st[key]; this.setState(o); }
+    });
+    const delivRows = [
+      ['Reels / TikTok master', '9:16 · 1080p60', 48],
+      ['Feed crop', '4:5 · 1080p30', 31],
+      ['Captions sidecar', '.SRT', 0.004],
+      ['Project file', '.MONT', 2]
+    ];
+    const delivKeys = Object.keys(st.deliv);
+
+    return {
+      platformLabel: (this.props.platform ?? 'iPhone') === 'Android' ? 'ANDROID' : 'IPHONE',
+      isIOS: (this.props.platform ?? 'iPhone') !== 'Android',
+      isAndroid: (this.props.platform ?? 'iPhone') === 'Android',
+      indicatorWidth: (this.props.platform ?? 'iPhone') === 'Android' ? '108px' : '138px',
+      grainDisplay: (this.props.showGrain ?? true) ? 'block' : 'none',
+      tag: { shelf: 'III', footage: '01', terms: '02', looks: '02', render: '03', cut: '04', print: '05' }[st.screen],
+      backCol: st.screen === 'shelf' ? 'rgba(243,242,242,0.18)' : '#f3f2f2',
+      back: () => this.go(st.screen === 'shelf' ? 'shelf' : st.prev),
+      isShelf: st.screen === 'shelf', isFootage: st.screen === 'footage', isTerms: st.screen === 'terms',
+      isLooks: st.screen === 'looks', isRender: st.screen === 'render', isCut: st.screen === 'cut', isPrint: st.screen === 'print',
+
+      reels: REELS.map((r) => ({ title: r[0], meta: r[1], state: r[2], stateCol: r[3], open: () => this.go('cut') })),
+      newReel: () => this.go('footage'),
+
+      clips: CLIPS.map((c) => {
+        const on = !st.dropped[c.id];
+        return {
+          label: c.label, dur: c.dur, on: on, n: on ? kept.indexOf(c) + 1 : '',
+          toggle: () => this.setState((s) => {
+            const d = Object.assign({}, s.dropped);
+            if (d[c.id]) delete d[c.id]; else d[c.id] = true;
+            return { dropped: d };
+          })
+        };
+      }),
+      selCount: kept.length,
+      dropCount: CLIPS.length - kept.length,
+      selDur: this.fmt(kept.reduce((a, c) => a + c.secs, 0)),
+      selectAll: () => this.setState({ dropped: {} }),
+
+      sliders: [
+        slide('Length target', 'len', st.len, 's', 'The cut lands within a second of this. Everything that will not fit stays in the bin.', 10, 90),
+        slide('Music intensity', 'music', st.music, '%', 'How hard the cut leans on the beat. Low lets shots run past the bar line.', 0, 100),
+        slide('B-roll vs you', 'broll', st.broll, '% b-roll', 'Scenery against frames you are in. Below thirty it becomes a talking-head piece.', 0, 100)
+      ],
+      gradePreviews: LOOKS.slice(0, 3).map((l) => ({
+        name: l[0], filter: l[2],
+        bd: st.grade === l[0] ? accent : 'rgba(243,242,242,0.14)',
+        col: st.grade === l[0] ? lit : '#9b9797',
+        pick: () => this.setState({ grade: l[0] })
+      })),
+      lookCount: LOOKS.length,
+      looks: LOOKS.map((l) => ({
+        name: l[0], note: l[1], filter: l[2],
+        bd: st.grade === l[0] ? accent : 'rgba(243,242,242,0.12)',
+        col: st.grade === l[0] ? lit : '#f3f2f2',
+        pick: () => this.setState({ grade: l[0] })
+      })),
+      knobRows: [
+        seg('Pacing', 'CUTS / MIN', PACING, 'pacing'),
+        seg('Aspect', 'DELIVERY', ASPECTS, 'aspect'),
+        seg('Transitions', 'BETWEEN SHOTS', TRANS, 'trans'),
+        seg('Hook', 'FIRST 3 SECONDS', HOOKS, 'hook')
+      ],
+      toggles: [
+        toggle('Burn in captions', 'Transcribed on device, set in Lora, one line at a time.', 'captions'),
+        toggle('Simulate camera move', 'Slow push on static frames — four percent over the shot.', 'camera')
+      ],
+      briefLine: ('THE BRIEF — ' + kept.length + ' CLIPS · ' + this.tc(total) + ' · ' + st.pacing.toUpperCase() + ' · ' + st.grade.toUpperCase() + ' · ' + st.aspect).toUpperCase(),
+
+      pct: Math.round((st.step / (STEPS.length - 1)) * 100) + '%',
+      pctNum: Math.round((st.step / (STEPS.length - 1)) * 100),
+      nowLine: done ? 'The cut is ready.' : STEPS[st.step][0] + '…',
+      renderCta: done ? 'Open the cut →' : 'Skip to the cut',
+      renderCtaCol: done ? lit : '#f3f2f2',
+      renderCtaBd: done ? accent : 'rgba(243,242,242,0.24)',
+      steps: STEPS.map((s, i) => {
+        const past = i < st.step, now = i === st.step;
+        return {
+          i: '0' + (i + 1), t: s[0], sub: now ? s[1] : '',
+          col: past ? '#9b9797' : now ? '#f3f2f2' : '#4c4948',
+          num: past ? accent : now ? lit : '#4c4948',
+          mark: past ? 'DONE' : now ? '···' : ''
+        };
+      }),
+
+      shotCount: SHOTS.length,
+      trackName: 'Slow Bloom, 92 BPM',
+      beatLabel: st.music > 55 ? 'CUTS SNAPPED TO BEAT' : 'CUTS RIDE FREE',
+      beats: Array.from({ length: 24 }, (_, i) => ({ c: i % 4 === 0 ? 'rgba(201,149,74,0.8)' : 'rgba(243,242,242,0.18)' })),
+      ticks: [0, 0.25, 0.5, 0.75, 1].map((f) => this.tc(total * f)),
+      playPct: Math.round(st.playhead * 100) + '%',
+      playTc: this.tc(st.playhead * total) + ' / ' + this.tc(total),
+      playGlyph: st.playing ? 'II' : '▶',
+      curFilter: look[2],
+      captions: st.captions && cur[4] !== '',
+      captionLine: cur[4],
+      togglePlay: () => this.setState((s) => ({ playing: !s.playing })),
+      scrub: (e) => {
+        const r = e.currentTarget.getBoundingClientRect();
+        this.setState({ playhead: Math.min(1, Math.max(0, (e.clientX - r.left) / r.width)) });
+      },
+      shots: SHOTS.map((s, i) => {
+        const on = i === st.shot;
+        return {
+          n: '0' + (i + 1), flex: s[2],
+          bd: on ? accent : 'rgba(243,242,242,0.16)',
+          lab: on ? lit : 'rgba(243,242,242,0.45)',
+          pick: () => {
+            let a = 0; for (let k = 0; k < i; k++) a += SHOTS[k][2];
+            this.setState({ shot: i, playhead: a / raw });
+          }
+        };
+      }),
+      curN: '0' + (st.shot + 1),
+      curName: cur[0],
+      curSrc: cur[1] + ' · ' + curLen.toFixed(1) + 's · ' + st.grade,
+      curRange: this.tc(acc) + ' — ' + this.tc(acc + curLen),
+      curReason: cur[3],
+      editLog: st.log || 'No manual changes yet. Every shot here is the AI\u2019s call — override any of them.',
+      reroll: () => this.setState({ log: 'SHOT ' + (st.shot + 1) + ' RE-ROLLED — NEW TAKE PULLED FROM ' + cur[1] + '.' }),
+      trim: () => this.setState({ log: 'SHOT ' + (st.shot + 1) + ' TRIMMED 0.4s OFF THE TAIL.' }),
+      hold: () => this.setState({ log: 'SHOT ' + (st.shot + 1) + ' HELD ONE BEAT LONGER; THE CUT AFTER IT MOVED UP.' }),
+      drop: () => this.setState({ log: 'SHOT ' + (st.shot + 1) + ' DROPPED — THE GAP CLOSED WITH A MATCH CUT.' }),
+
+      aspect: st.aspect, gradeName: st.grade, lenLabel: this.tc(total),
+      deliverables: delivRows.map((d, i) => ({
+        label: d[0], spec: d[1],
+        bd: st.deliv[i] ? accent : 'rgba(243,242,242,0.22)',
+        tick: st.deliv[i] ? lit : 'transparent',
+        flip: () => this.setState((s) => { const o = Object.assign({}, s.deliv); if (o[i]) delete o[i]; else o[i] = true; return { deliv: o }; })
+      })),
+      delivCount: delivKeys.length,
+      delivSize: delivKeys.reduce((a, k) => a + delivRows[k][2], 0).toFixed(0) + ' MB · ~' + (12 + delivKeys.length * 9) + 's',
+      exported: st.exported,
+      destinations: [{ t: 'Reels · drafts' }, { t: 'TikTok · with caption' }, { t: 'Camera roll' }, { t: 'Private review link' }],
+      exportNote: st.exported
+        ? 'Printed. The master is in your camera roll and the project file is on the shelf — reopen it and every shot is still overridable.'
+        : 'Printing keeps the project file, so the cut stays editable after it leaves the app. Captions are transcribed on device.',
+      exportCta: st.exported ? 'Printed ✓' : 'Print ' + delivKeys.length + ' files',
+      doExport: () => this.setState({ exported: true }),
+
+      goFootage: () => this.go('footage'), goTerms: () => this.go('terms'), goLooks: () => this.go('looks'),
+      goCut: () => this.go('cut'), goPrint: () => this.go('print'), startRender: this.startRender,
+
+      stepper: [
+        ['Shelf', 'shelf'], ['Footage', 'footage'], ['Terms', 'terms'], ['Cut', 'cut'], ['Print', 'print']
+      ].map((p) => ({
+        t: p[0].toUpperCase(),
+        rule: st.screen === p[1] ? accent : 'rgba(243,242,242,0.16)',
+        col: st.screen === p[1] ? lit : '#605d5d',
+        go: () => this.go(p[1])
+      }))
+    };
+  }
+}
+
+</script>
+</body>
+</html>
